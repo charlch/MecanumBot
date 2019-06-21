@@ -51,14 +51,14 @@ void loop() {
 
     updateLed();
     
-	int strafe = IBus.readChannel(STRAFE_CHANNEL);
+    int strafe = IBus.readChannel(STRAFE_CHANNEL);
     int steering = IBus.readChannel(STEERING_CHANNEL);
     int throttle = IBus.readChannel(THROTTLE_CHANNEL);
 
     if (armedState == DISARMED) {
         throttle = 1500;
         steering = 1500;
-		strafe = 1500;
+        strafe = 1500;
     }
 
     setControls(throttle, steering, strafe);
@@ -86,30 +86,30 @@ void updateLed() {
 void setControls(int throttle, int steering, int strage) {
     // Firstly scale 1000 to 2000 => -1 to 1
     
-	float _throttle = normalise(throttle);
+    float _throttle = normalise(throttle);
     float _steering = normalise(steering);
     float _strafe = normalise(strafe);
-	
-    float fl = _throttle + _steering + _strafe;	
-	float fr = _throttle - _steering - _strafe;
-	float rl = _throttle + _steering - _strafe;
-	float rr = _throttle - _steering + _strafe;
-	
-	// These are now scaled -3 to 3.
-	// find the largest and scale to that
-	float largest = max(max(abs(fl), abs(fr)), max(abs(rl), abs(rr)));
-	if (largest > 1.0) {
-		fl = fl / largest;
-		fr = fr / largest;
-		rl = rl / largest;
-		rr = rr / largest;
-	}
-	//now they are scaled -1 to 1 again
-	
-	fl_motor.set_signal(fl);
-	fr_motor.set_signal(fr);
-	rl_motor.set_signal(rl);
-	rr_motor.set_signal(rr);
+    
+    float fl = _throttle + _steering + _strafe;    
+    float fr = _throttle - _steering - _strafe;
+    float rl = _throttle + _steering - _strafe;
+    float rr = _throttle - _steering + _strafe;
+    
+    // These are now scaled -3 to 3.
+    // find the largest and scale to that
+    float largest = max(max(abs(fl), abs(fr)), max(abs(rl), abs(rr)));
+    if (largest > 1.0) {
+        fl = fl / largest;
+        fr = fr / largest;
+        rl = rl / largest;
+        rr = rr / largest;
+    }
+    //now they are scaled -1 to 1 again
+    
+    fl_motor.set_signal(fl);
+    fr_motor.set_signal(fr);
+    rl_motor.set_signal(rl);
+    rr_motor.set_signal(rr);
 }
 
 
