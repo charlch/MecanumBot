@@ -1,5 +1,6 @@
 #include <HBridge.h>
 #include <FlySkyIBus.h>
+#include <ReceiveOnlySoftwareSerial.h>
 
 // Channel selection
 
@@ -20,10 +21,13 @@ const int FAST_LED = 100;
 // Pin setup
 const int ledPin = LED_BUILTIN;
 
-HBridge fl_motor(1, 2, 11, DEAD_BAND_FRC);
-HBridge fr__motor(3, 4, 10, DEAD_BAND_FRC);
+// Pins available for motors are 3 - 12 (10 pins) and 14-17 (4 pins)
+HBridge fl_motor(14, 15, 11, DEAD_BAND_FRC);
+HBridge fr_motor(3, 4, 10, DEAD_BAND_FRC);
 HBridge rl_motor(7, 8, 5, DEAD_BAND_FRC);
 HBridge rr_motor(9, 12, 6, DEAD_BAND_FRC);
+
+ReceiveOnlySoftwareSerial recSerial (2);  // Rx pin
 
 // Initial state
 int armedState = DISARMED;
@@ -34,7 +38,7 @@ long led_flash_interval = SLOW_LED;
 
 void setup() {
     Serial.begin(115200);
-    IBus.begin(Serial);
+    IBus.begin(recSerial);
     pinMode(ledPin, OUTPUT);
 }
 
