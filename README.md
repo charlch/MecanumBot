@@ -8,8 +8,7 @@ Parts list:
 
 
 * Transmitter and receiver, went for i6X+X6B option as it's the most useful for other projects in the future: 
-https://www.banggood.com/custlink/Km3vZjFls4
-
+https://www.banggood.com/custlink/mGvvIOHUTA
 * Battery case: https://www.banggood.com/custlink/3KGv8o5l2D
 * Camera and transmitter: https://www.banggood.com/custlink/vDvKIjVLqJ
 * FPV goggles https://www.banggood.com/custlink/KGDK8aPlzt
