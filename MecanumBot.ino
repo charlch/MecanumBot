@@ -1,13 +1,11 @@
 #include <HBridge.h>
 #include "FlySkyIBus.h"
 
-const float DEAD_BAND_FRC = 0.01;
-
 //Create the motor driver, setting it's pins and dead band fraction
-HBridge motor1(14, 15, 10, DEAD_BAND_FRC);
-HBridge motor2(8, 16, 9, DEAD_BAND_FRC);
-HBridge motor3(5, 7, 6, DEAD_BAND_FRC);
-HBridge motor4(2, 4, 3, DEAD_BAND_FRC);
+HBridge motor1(14, 15, 10);
+HBridge motor2(8, 16, 9);
+HBridge motor3(5, 7, 6);
+HBridge motor4(2, 4, 3);
 
 void setup(){
   Serial.begin(115200);
