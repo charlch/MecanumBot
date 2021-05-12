@@ -19,7 +19,7 @@ void loop()
   int forward_raw = IBus.readChannel(1);
   int strafe_raw = IBus.readChannel(0);
   int turn_raw = IBus.readChannel(3);
-  Serial.println(forward_raw);f
+  Serial.println(forward_raw);
   if ((forward_raw<900) || (IBus.millisSinceUpdate() > 500)) {
     forward_raw = 1500;
     strafe_raw = 1500;
